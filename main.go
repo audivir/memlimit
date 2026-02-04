@@ -43,7 +43,7 @@ Arguments:
   LIMIT    Memory limit with unit (K, M, G, T).
            Optional B suffix. Case insensitive.
   TIMEOUT  (Optional) Duration to wait for graceful shutdown (SIGTERM)
-		   before force killing (SIGKILL). Default: %s.
+           before force killing (SIGKILL). Default: %s.
            Format examples: 5s, 1m, 500ms. Set to 0s for immediate kill.
 
 Examples:
