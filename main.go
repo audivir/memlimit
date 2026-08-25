@@ -14,17 +14,18 @@ import (
 	"github.com/shirou/gopsutil/v3/process"
 )
 
+var version = "dev"
+
 const (
 	checkInterval  = 100 * time.Millisecond // safety check interval (fast)
 	printInterval  = 5 * time.Second        // UI update interval (slow)
 	changeLimit    = 1 * 1024 * 1024        // update UI if change > 1MB
 	defaultTimeout = 1 * time.Second        // default timeout for graceful shutdown
-	version        = "0.1.0"
 )
 
 // printVersion prints the version of the program
 func printVersion() {
-	fmt.Printf("%s %s\n", os.Args[0], version)
+	fmt.Printf("%s version %s\n", path.Base(os.Args[0]), version)
 }
 
 // printHelp prints the complete help message

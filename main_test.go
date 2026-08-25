@@ -161,9 +161,9 @@ func TestWatchAndKill(t *testing.T) {
 				// Success
 			case <-time.After(5 * time.Second):
 				// close pipe and read output
-				w.Close()
+				_ = w.Close()
 				out, _ := io.ReadAll(r)
-				fmt.Fprintf(oldStdout, "Captured Output:\n%s\n", string(out))
+				_, _ = fmt.Fprintf(oldStdout, "Captured Output:\n%s\n", string(out))
 				t.Fatal("Timeout: watchAndKill did not return")
 			}
 
@@ -171,13 +171,13 @@ func TestWatchAndKill(t *testing.T) {
 			_ = cmd.Wait()
 
 			// close pipe and read output
-			w.Close()
+			_ = w.Close()
 			outBytes, _ := io.ReadAll(r)
 			output := string(outBytes)
 
 			// print captured output to real stdout for debugging
 			if testing.Verbose() {
-				fmt.Fprintf(oldStdout, "%s", output)
+				_, _ = fmt.Fprintf(oldStdout, "%s", output)
 			}
 
 			// assertions

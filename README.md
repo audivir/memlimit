@@ -3,11 +3,13 @@
 Watches the memory usage of a process and its children.
 If the total memory usage (evaluated as RSS) exceeds a specified limit, the process tree is terminated (SIGTERM then SIGKILL).
 
+## Prerequisites
+
+- Go 1.26 or later (only needed to build from source)
+
 ## Installation
 
 ### From Source
-
-Requirements: Go 1.20+
 
 #### Direct installation
 
@@ -35,9 +37,9 @@ go build -ldflags "-s -w" -o memlimit main.go
 ### Arguments
 
 1. **PID**: The Process ID (integer) to monitor.
-2. **LIMIT**: Memory limit with unit (K, M, G, T).
+1. **LIMIT**: Memory limit with unit (K, M, G, T).
    Optional B suffix. Case insensitive.
-3. **TIMEOUT** _(Optional)_: Duration to wait for graceful shutdown (SIGTERM)
+1. **TIMEOUT** _(Optional)_: Duration to wait for graceful shutdown (SIGTERM)
    before force killing (SIGKILL). Default: 1s.
    Format examples: 5s, 1m, 500ms. Set to 0s for immediate kill.
 
