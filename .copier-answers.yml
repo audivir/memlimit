@@ -1,5 +1,5 @@
 # Changes here will be overwritten by Copier
-_commit: 1a45ad8
+_commit: e730ed7
 _src_path: gh:audivir/copier-template
 description: Watches memory usage of a process and terminates it if a limit is exceeded
 github_org: audivir
