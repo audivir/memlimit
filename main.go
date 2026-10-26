@@ -7,6 +7,7 @@ import (
 	"os"
 	"path"
 	"regexp"
+	"runtime/debug"
 	"strconv"
 	"strings"
 	"time"
@@ -14,7 +15,18 @@ import (
 	"github.com/shirou/gopsutil/v3/process"
 )
 
+// version is set with -ldflags -X main.version=... for release builds, resolved from the
+// module build info for go install, and falls back to dev otherwise.
 var version = "dev"
+
+func init() {
+	if version != "dev" {
+		return
+	}
+	if info, ok := debug.ReadBuildInfo(); ok && info.Main.Version != "" && info.Main.Version != "(devel)" {
+		version = info.Main.Version
+	}
+}
 
 const (
 	checkInterval  = 100 * time.Millisecond // safety check interval (fast)
