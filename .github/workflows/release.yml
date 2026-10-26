@@ -35,6 +35,8 @@ jobs:
         exclude:
           - goos: windows
             goarch: arm64
+          - goos: darwin
+            goarch: amd64
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-go@v7
@@ -93,6 +95,8 @@ jobs:
           pattern: binary-*
           path: dist
           merge-multiple: true
+      - name: Write checksums
+        run: cd dist && sha256sum "$BIN_NAME"-* > SHA256SUMS
       - name: Upload to GitHub Release
         uses: softprops/action-gh-release@v3
         with:
