@@ -1,5 +1,5 @@
 # Changes here will be overwritten by Copier
-_commit: 9173b0a
+_commit: '6196493'
 _src_path: gh:audivir/copier-template
 description: Watches memory usage of a process and terminates it if a limit is exceeded
 github_org: audivir
@@ -10,3 +10,4 @@ project_name: memlimit
 project_slug: memlimit
 project_type: go
 publishable: true
+remove_tabs_extra_exclude: ''
